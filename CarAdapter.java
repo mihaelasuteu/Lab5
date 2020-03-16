@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
 public class CarAdapter<nameCar, resource> extends BaseAdapter {
+
     Activity context;
     ArrayList<Car> cars;
 
@@ -17,15 +18,15 @@ public class CarAdapter<nameCar, resource> extends BaseAdapter {
         cars = new ArrayList<>();
     }
 
-    public void addCar(String nameCar, int resource){
+    public void addCar(String nameCar, int resource) {
 
-    Car car = new Car();
-    car.name = nameCar;
-    car.imageResource = resource;
-         cars.add(car);
-         this.notifyDataSetChanged();
+        Car car = new Car();
+        car.name = nameCar;
+        car.imageResource = resource;
+        cars.add( car );
+        this.notifyDataSetChanged();
 
-}
+    }
 
 
     @Override
@@ -35,7 +36,7 @@ public class CarAdapter<nameCar, resource> extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return cars.get(position);
+        return cars.get( position );
     }
 
     @Override
@@ -49,18 +50,19 @@ public class CarAdapter<nameCar, resource> extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            element = layoutInflater.inflate(R.layout.list_item, null);
+            element = layoutInflater.inflate( R.layout.list_item, null );
             TagCar car = new TagCar();
-            car.name = element.findViewById(R.id.textView);
-            car.image = element.findViewById(R.id.imageView);
-            element.setTag(car);
+            car.name = element.findViewById( R.id.textView );
+            car.image = element.findViewById( R.id.imageView );
+            element.setTag( car );
         } else {
             element = convertView;
         }
 
         TagCar tag = (TagCar) element.getTag();
-        tag.name.setText(cars.get(position).name);
-        tag.image.setImageResource(cars.get(position).imageResource);
-        return  element;
+        tag.name.setText( cars.get( position ).name );
+        tag.image.setImageResource( cars.get( position ).imageResource );
+        return element;
     }
 }
+
